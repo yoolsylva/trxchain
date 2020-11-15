@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>TRX Chain</title>
+     <link rel="stylesheet" href="/modules/site/main/assets/styles/odometer-theme-digital.css">
+     <link rel="stylesheet" href="/modules/site/main/assets/styles/styles.css?1602611159">
+     <link rel="icon" href="/modules/site/main/assets/images/favicon.png" type="image/png" />
+     <meta name="upline" content="THvErdi51o4umhLnwszXc89xzQdyVxqs12" />
+     <meta name="sc.balance" content="652027202.51323" />
+     <style>
+          [v-cloak] {
+               display: none;
+          }
+     </style>
+</head>
+
+<body>
+     <main id="App" v-cloak>
+          <div class="header">
+               <div class="header__wrap">
+                    <div class="header__item" v-if="tron.account">
+                         <div class="header__label">Your Tron wallet</div>
+                         <div class="header__value"><span v-text="tron.account"></span></div>
+                    </div>
+                    <div class="header__grow"></div>
+                    <div class="header__item">
+                         <div class="header__label">&nbsp;</div>
+                         <div class="header__value lang">
+                              <div>Explore</div>
+                              <ul>
+                                   <li><a href="https://cyberchain.cc" target="_blank">CyberChain</a></li>
+                                   <li><a href="https://uswap.me" target="_blank">Uswap</a></li>
+                                   <li><a href="https://ume.finance" target="_blank">Ume.Finance</a></li>
+                                   <li><a href="https://eclipcity.io" target="_blank">Eclipcity</a></li>
+                              </ul>
+                         </div>
+                    </div>
+                    <div class="header__item">
+                         <div class="header__label">System language</div>
+                         <div class="header__value lang">
+                              <div><img src="https://api.smartcontract.ru/cdn/flags/en.svg"> English</div>
+                              <ul>
+                                   <li><a href="?lang=en"><img src="https://api.smartcontract.ru/cdn/flags/en.svg">
+                                             English</a></li>
+                                   <li><a href="?lang=es"><img src="https://api.smartcontract.ru/cdn/flags/es.svg">
+                                             Español</a></li>
+                                   <li><a href="?lang=ru"><img src="https://api.smartcontract.ru/cdn/flags/ru.svg">
+                                             Русский</a></li>
+                                   <li><a href="?lang=zh"><img src="https://api.smartcontract.ru/cdn/flags/zh.svg">
+                                             中国</a></li>
+                              </ul>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <section class="section-top"><img class="top-logo" src="/modules/site/main/assets/images/logo.png?2"
+                    width="96"><img class="top-heading" src="/modules/site/main/assets/images/logo-desktop.png"><img
+                    class="top-heading-mobile" src="/modules/site/main/assets/images/logo-mobile.png">
+               <div class="container" v-show="tab == 'main'">
+                    <p>A financial system built on smart contract technology.<br>Open to all, transparent to all.</p>
+                    <div class="counter-wrapper"><span>$</span>
+                         <div class="odometer" ref="odometer">{{ contract.balance * rates.trx }}</div>
+                    </div>
+                    <p>The worlds first decentralized, community support fund</p>
+                    <div class="menu">
+                         <div><button class="button" @click.prevent="tab = 'tutorial'">
+                                   <div class="button-content">How to join</div>
+                                   <div class="button-image"><img src="/modules/site/main/assets/images/button.png">
+                                   </div>
+                              </button></div>
+                         <div><button class="button" @click.prevent="tab = 'guide'">
+                                   <div class="button-content">Guide</div>
+                                   <div class="button-image"><img src="/modules/site/main/assets/images/button.png">
+                                   </div>
+                              </button></div>
+                         <div><button class="button" @click.prevent="getPoolTopInfo(); tab = 'top'">
+                                   <div class="button-content">Top 4 sponsors</div>
+                                   <div class="button-image"><img src="/modules/site/main/assets/images/button.png">
+                                   </div>
+                              </button></div>
+                    </div>
+               </div>
+          </section>
+          <section class="section calc bg-hidden" v-show="tab == 'main'">
+               <div class="container">
+                    <h2 class="join">Join</h2>
+                    <div class="panel-join">
+                         <div class="panel-join-background"><img class="desktop"
+                                   src="/modules/site/main/assets/images/join.svg"><img class="mobile"
+                                   src="/modules/site/main/assets/images/mobile-join.png"></div>
+                         <div class="panel-join-display"><span>{{ deposit_amount.toFixed(0) }}</span><span>TRX</span>
+                         </div>
+                         <div class="panel-join-values"><a href="#" @click.prevent="deposit_amount += 100">+ 100
+                                   TRX</a><a href="#" @click.prevent="deposit_amount += 1000">+ 1K TRX</a><a href="#"
+                                   @click.prevent="deposit_amount += 10000">+ 10K TRX</a><a href="#"
+                                   @click.prevent="deposit_amount += 30000">+ 30K TRX</a><a href="#"
+                                   @click.prevent="deposit_amount += 50000">+ 50K TRX</a><a href="#"
+                                   @click.prevent="deposit_amount += 100000">+ 100K TRX</a></div>
+                         <div class="panel-join-controls"><button class="button" @click="deposit_amount = 0">
+                                   <div class="button-content">Reset</div>
+                                   <div class="button-image"><img src="/modules/site/main/assets/images/button.png">
+                                   </div>
+                              </button><button class="button" @click="deposit()">
+                                   <div class="button-content">Join</div>
+                                   <div class="button-image"><img src="/modules/site/main/assets/images/button.png">
+                                   </div>
+                              </button></div>
+                    </div>
+                    <p>to join the project you need to use<br />the Tron wallet. <a href="/guide/"
+                              @click.prevent="tab = 'guide'">read more</a></p>
+               </div>
+          </section>
+          <section class="section" v-show="tab == 'main'">
+               <div class="container">
+                    <h2>statistics</h2>
+                    <div class="panel-info">
+                         <h3>Smart contract info</h3>
+                         <div>
+                              <div class="panel-info-item"><span>Smart contract address</span><a
+                                        :href="'https://tronscan.org/#/contract/' + contract_address"
+                                        target="_blank">{{ contract_address.substr(0, 8) }}...</a></div>
+                              <div class="panel-info-item"><span>Total TRX deposits all time</span><span
+                                        class="ether-value">{{ safe(contract.total_deposited.toLocaleString()) }}
+                                        TRX</span></div>
+                              <div class="panel-info-item"><span>Smart contract balance</span><span
+                                        class="ether-value">{{ safe(contract.balance.toLocaleString()) }} TRX</span>
+                              </div>
+                              <div class="panel-info-item"><span>Amount withdrawn by members</span><span
+                                        class="ether-value">{{ safe(contract.total_withdraw.toLocaleString()) }}
+                                        TRX</span></div>
+                              <div class="panel-info-item"><span>Amount in the daily pool</span><span
+                                        class="ether-value">{{ safe(contract.pool_balance.toLocaleString()) }}
+                                        TRX</span></div>
+                              <div class="panel-info-item"><span>Daily pool countdown</span><span class="ether-value"
+                                        v-timer="contract.pool_last_draw * 1000">00:00:00</span></div>
+                              <div class="panel-info-item"><span>Maximum amount from top referrer</span><span
+                                        class="ether-value">{{ safe(contract.pool_lider.toLocaleString()) }} TRX</span>
+                              </div>
+                              <div class="panel-info-item"><span>Referred by</span><a
+                                        v-if="tron.account && (user.upline || upline)"
+                                        :href="'https://tronscan.org/#/address/' + (user.upline || upline)"
+                                        target="_blank">{{ (user.upline || upline).substr(0, 8) }}...</a><span
+                                        class="ether-value" v-if="!(tron.account && (user.upline || upline))">---</span>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="panel-info">
+                         <h3>Personal statistic</h3>
+                         <div>
+                              <div class="panel-info-item"><span>Your address</span><a v-if="tron.account"
+                                        :href="'https://tronscan.org/#/address/' + tron.account"
+                                        target="_blank">{{ tron.account.substr(0, 8) }}...</a><span v-if="!tron.account"
+                                        class="ether-value">---</span></div>
+                              <div class="panel-info-item"><span>Next income countdown</span><span class="ether-value"
+                                        v-timer="user.deposit_time * 1000">00:00:00</span></div>
+                              <div class="panel-info-item"><span>210% income limit remain</span><span
+                                        class="ether-value">{{ safe(Math.max(0, (user.deposit_amount * 2.1 - user.payouts)).toLocaleString()) }}
+                                        TRX</span></div>
+                              <div class="panel-info-item"><span>Daily income 1%</span><span
+                                        class="ether-value">{{ safe(user.payout.toLocaleString()) }} TRX</span></div>
+                              <div class="panel-info-item"><span>Direct referral income</span><span
+                                        class="ether-value">{{ safe(user.direct_bonus.toLocaleString()) }} TRX</span>
+                              </div>
+                              <div class="panel-info-item"><span>Matching bonus</span><span
+                                        class="ether-value">{{ safe(user.match_bonus.toLocaleString()) }} TRX</span>
+                              </div>
+                              <div class="panel-info-item"><span>TOP Sponsor rewards</span><span
+                                        class="ether-value">{{ safe(user.pool_bonus.toLocaleString()) }} TRX</span>
+                              </div>
+                              <div class="panel-info-item"><span>Income withdrawn to wallet</span><span
+                                        class="ether-value">{{ safe(user.payouts.toLocaleString()) }} TRX</span></div>
+                              <div class="panel-info-item"><span>Unwithdrawn income</span><span
+                                        class="ether-value">{{ safe((user.payout + user.direct_bonus + user.match_bonus + user.pool_bonus).toLocaleString()) }}
+                                        TRX</span></div>
+                              <div class="panel-info-item"><span></span><a class="btn" href="#"
+                                        @click.prevent="withdraw()">💵 Withdraw</a></div>
+                         </div>
+                    </div>
+                    <div class="panel-info">
+                         <h3>Statistics</h3>
+                         <div>
+                              <div class="panel-info-item"><span>Total amount of deposited TRX</span><span
+                                        class="ether-value" v-text="safe(user.total_deposits.toLocaleString())"></span>
+                              </div>
+                              <div class="panel-info-item"><span>Total amount of received TRX</span><span
+                                        class="ether-value" v-text="safe(user.total_payouts.toLocaleString())"></span>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="panel-info">
+                         <h3>Organization</h3>
+                         <div>
+                              <div class="panel-info-item"><span>Invitation link</span><a class="btn"
+                                        v-if="tron.account" :href="location.origin + '#ref=' + tron.account"
+                                        target="_blank"
+                                        @click.prevent="copyText('https://trxchain.io/#ref=' + tron.account)">Copy</a><span
+                                        class="ether-value" v-if="!tron.account">---</span></div>
+                              <div class="panel-info-item"><span>Personal invited partners</span><span
+                                        class="ether-value" v-text="safe(user.referrals)"></span></div>
+                              <div class="panel-info-item"><span>Total number of partners</span><span
+                                        class="ether-value" v-text="safe(user.total_structure)"></span></div>
+                              <div class="panel-info-item"><span>Total community participants</span><span
+                                        class="ether-value" v-text="safe(contract.total_users)">?</span></div>
+                              <div class="panel-info-item" v-if="tron.account && user.total_structure > 0">
+                                   <span></span><a class="btn" href="#" @click.prevent="structure()">Structure</a></div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+          <section class="section" v-show="tab == 'guide'">
+               <div class="page">
+                    <h3>Guide</h3>
+                    <p>Welcome to the world´s first decentralized community support fund built on TRON blockchain and
+                         smart contract technology.</p>
+                    <p>The TRONCHAIN Smart Contract is designed to provide everyone with an independent, financial
+                         support fund, based on Smart Contract technology, surrounded and supported by multiple services
+                         including DEFI and online gaming through ECLIPCITY.</p>
+                    <p>Any participant can contribute TRX towards the community fund and support the TRONCHAIN community
+                         members, the participant will now activate the contract code and will start to receive support
+                         back from other community members.</p>
+                    <p>TRONCHAIN is 100% decentralized and a community-based project; Meaning that there are no
+                         guarantee nor additional profits made in TRONCHAIN alone, all that you receive from TRONCHAIN
+                         is made from other community members and based upon your own and the community efforts as this
+                         is a P2P support model.</p>
+                    <p>You support others and others support you back.</p>
+                    <p>TRONCHAIN can actually be viewed as a decentralized “third party” which insures complete
+                         fairness, transparency and justice for all according to the algorithm code.</p>
+                    <p>There are no mediators or intermediaries, no owners, no company, no CEO and no human interaction,
+                         which is effectively guaranteeing the fairness of all participating partners and partners funds
+                         according to the rules of the Smart Contract.</p>
+                    <p>It is the most reasonable, safest, and best cutting-edge financial SUPPORT model available at
+                         this time.</p>
+                    <hr /><br />
+                    <p>You can participate in TRONCHAIN a minimum deposit of 100 TRX to the Fund, you are now eligible
+                         to receive 210% back</p>
+                    <p>The 210% is returned in 4 ways (1 passive and 3 via marketing) and when the 210% is accumulated
+                         through any of the 4 ways, a new deposit must be made equal or greater to continue receiving
+                         from the fund.</p>
+                    <ol>
+                         <li>
+                              <p>1% Daily return on your Deposit (maximum 210 days) 100% Passive.</p>
+                         </li>
+                         <li>
+                              <p>10% Direct Referral Commission for Sharing and Growing the Community Fund.</p>
+                         </li>
+                         <li>
+                              <p>Matching Commission on Partners Daily Income every time they make a withdrawal</p>
+                              <p>1st generation 30%<br />2nd generation 10%<br />3rd generation 10%<br />4th generation
+                                   10%<br />5th generation 10%<br />6th generation 8%<br />7th generation 8%<br />8th
+                                   generation 8%<br />9th generation 8%<br />10th generation 8%<br />11th generation
+                                   5%<br />12th generation 5%<br />13th generation 5%<br />14th generation 5%<br />15th
+                                   generation 5%</p>
+                              <p>1 new level is activated for each direct partner, maximum 15 levels, see above.</p>
+                         </li>
+                         <li>
+                              <p>Daily Top Referrer Pool 3%, of ALL Deposits set aside in pool, every 24 hour 10% of the
+                                   pool is shared among top 4 sponsors in volume.</p>
+                         </li>
+                    </ol>
+                    <hr /><br />
+                    <p>Minimum and maximum deposit limits</p>
+                    <p>1st cycle, minimum deposit 100 TRX, up to 100 000 TRX.</p>
+                    <p>2nd cycle, equal or greater than previous deposit, up to 300 000 TRX.</p>
+                    <p>3rd cycle, equal or greater than previous deposit, up to 900 000 TRX.</p>
+                    <p>4th cycle and beyond, equal or greater than previous deposit, up to 2 000 000 TRX.</p>
+                    <hr /><br />
+                    <p>IMPORTANT NOTES*</p>
+                    <p>*TRX CHAIN is a community-based project, 100% decentralized, P2P transactions through Smart
+                         Contract.</p>
+                    <p>*Each Deposit Cycle is 210%.</p>
+                    <p>*When 210% is received, a new deposit must be made to continue earning / receiving from any of
+                         the 4 ways.</p>
+                    <p>*Minimum entry is 100 TRX, open to all participants, no restrictions.</p>
+                    <p>*No referrals required in order to receive the 1% that pays out daily to all members, 100%
+                         passive.</p>
+                    <p>*Increase the speed of your returns by growing the community fund through marketing / sharing of
+                         TRX CHAIN.</p>
+                    <p>*Admin and Dev team is developing and deploying multiple services within DEFI, marketing, Online
+                         gaming, Crypto Debit card, Unified Tech Service and much more to complete the vision of a
+                         complete decentralized financial support system.</p><br><a href="/"
+                         @click.prevent="tab = 'main'">Back</a>
+               </div>
+          </section>
+          <section class="section" v-show="tab == 'tutorial'">
+               <div class="page">
+                    <h3>How to join</h3>
+                    <p>To join TRON CHAIN you need to use one of the following Dapp wallets.</p>
+                    <p>To connect with the smart contract, please download, set up, and fund your preferred wallet from
+                         the instructions below.</p>
+                    <p>*it is mandatory to use a referral link 1st time depositing to TRON CHAIN smart contract, please
+                         get back to the person that introduced you to TRON CHAIN.</p>
+                    <p>PHONE WALLET -</p>
+                    <p>TRON WALLET - download at offical site:<br /><a href="https://www.tronwallet.me/" target="_blank"
+                              rel="nofollow noopener noreferrer">https://www.tronwallet.me/</a></p>
+                    <p>TRONWALLET is a secure p2p crypto wallet and exchange for TRON (TRX)</p>
+                    <ol>
+                         <li>Download and set up TRON WALLET to phone</li>
+                         <li>Fund TRON wallet with TRX</li>
+                         <li>Go to Dapp browser in wallet and enter the ref link</li>
+                         <li>select amount to deposit and click join</li>
+                    </ol>
+                    <hr />
+                    <p>TRONLINK Wallet - PC BROWSER EXTENSION</p>
+                    <p>What is TRONLINK?</p>
+                    <p>TRONLINK is Available as a browser extension and as a mobile app, TronLink equips you with a key
+                         vault, secure login, and token wallet&mdash;everything you need to manage your digital assets.
+                    </p>
+                    <p>TronLink generates passwords and keys on your device, so only you have access to your accounts
+                         and data</p>
+                    <p>How download TRONLINK browser extension?</p>
+                    <p>Official website:&nbsp;<a href="https://www.tronlink.org/" target="_blank"
+                              rel="nofollow noopener noreferrer">https://www.tronlink.org/</a></p>
+                    <p>How to connect TRONLINK to TRON CHAIN smart contract?</p>
+                    <p>Open Web browser with TronLink download<br />Enter&nbsp;<a href="https://trxchain.io/"
+                              target="_blank" rel="nofollow noopener noreferrer">TRXCHAIN.IO</a>&nbsp;(ref link) an
+                         click enter<br />Allow TRONLINK wallet to connect to&nbsp;<a href="https://trxchain.io/"
+                              target="_blank" rel="nofollow noopener noreferrer">trxchain.io</a></p>
+                    <p>*first time joining TRON CHAIN, follow these steps</p>
+                    <p>copy ref link from sponsor<br />enter ref link into your pc browser with TRONLINK
+                         extension<br />Select the amount you wish to deposit up to 100.000 TRX<br />Click join and
+                         confirm transaction in wallet</p><br /><a href="/" @click.prevent="tab = 'main'">Back</a>
+               </div>
+          </section>
+          <section class="section" v-show="tab == 'top'">
+               <div class="container">
+                    <div class="panel-info">
+                         <h3>Top 4 sponsors</h3>
+                         <div>
+                              <table style="text-transform:none; font-size:13px; line-height:2.5; width:100%;">
+                                   <thead>
+                                        <tr>
+                                             <th width="60%">Address</th>
+                                             <th width="20%">TRX</th>
+                                             <th width="20%">Income</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        <tr v-for="(v, index) in pool_top">
+                                             <td v-text="v.address.substr(0, 16) + '..'"></td>
+                                             <td v-text="v.deposit"></td>
+                                             <td
+                                                  v-text="(contract.pool_balance / 1000 * [40,30,20,10][index]).toFixed(4)">
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table><br />
+                              <div class="panel-info-item"><a class="btn" href="#"
+                                        @click.prevent="tab = 'main'">Back</a></div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+          <div class="i-modal" v-if="upmodal.show">
+               <div class="i-modal__wrap">
+                    <div class="i-modal__close" @click="upmodal.show = false"></div>
+                    <div class="i-modal__body">
+                         <div class="i-modal__title">Sponsor</div>
+                         <div class="i-modal__text">
+                              <div v-if="upmodal.edit"><input type="text"
+                                        style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;"
+                                        size="50" v-model="upmodal.upline_edit"><br /></div>
+                              <div v-if="!upmodal.edit" style="text-transform:none"><span
+                                        class="addr">{{ upmodal.upline }} &nbsp;&nbsp;&nbsp; </span><a
+                                        href="javascript:void()" @click="upmodal.edit = true">Edit</a></div>
+                              <br /><button
+                                   @click="/^T[1-9A-HJ-NP-Za-km-z]{33}$/i.test(upmodal.upline_edit ? upmodal.upline_edit : upmodal.upline) ? (!(upmodal.show = false) && deposit(upmodal.upline_edit ? upmodal.upline_edit : upmodal.upline)) : null">Join</button><br /><br />
+                              <p style="text-transform:none">Check your invitation ID. <br /> You can change it before
+                                   proceeding with deposit.</p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </main>
+     <footer>
+          <div class="footer-content"><a href="https://t.me/trxchainofficial" target="_blank" class="btn">🏛 Official
+                    channel</a><a href="https://t.me/EclipCity_support" target="_blank" class="btn">🦹 Support team</a>
+          </div>
+     </footer>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+     <script src="/modules/site/main/assets/scripts/odometer.min.js"></script>
+     <script src="/modules/site/main/assets/scripts/common.js?1603379446"></script>
+     <script type="text/javascript">
+          (function (m, e, t, r, i, k, a) {
+               m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+               m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+          })
+               (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+          ym(66417985, "init", {
+               clickmap: true,
+               trackLinks: true,
+               accurateTrackBounce: true
+          });
+     </script><noscript>
+          <div><img src="https://mc.yandex.ru/watch/66417985" style="position:absolute; left:-9999px;" alt="" /></div>
+     </noscript>
+</body>
+
+</html>
