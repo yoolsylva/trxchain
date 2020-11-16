@@ -1,6 +1,6 @@
-pragma solidity 0.5.8;
+pragma solidity 0.5.4;
 
-contract TrxChain {
+contract TrxWealth {
     struct User {
         uint256 cycle;
         address upline;

@@ -31,7 +31,7 @@ p {
   margin: 0 0 25px; }
 
 a {
-  color: #ff0000; }
+  color: #44bd32; }
 
 .section {
   padding: 30px 0 30px;
@@ -80,14 +80,14 @@ a {
     position: absolute;
     display: block;
     max-width: 100%;
-    top: 0;
+    top: 70px;
     left: 50%;
     transform: translateX(-50%); }
   .section-top .top-heading-mobile {
     position: absolute;
     display: none;
     max-width: 100%;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%); }
 
@@ -101,9 +101,9 @@ a {
   height: 82px;
   margin: 0 auto 45px;
   box-sizing: border-box;
-  border: 5px solid #ff0000;
+  border: 5px solid #44bd32;
   background: #040107 !important;
-  background: radial-gradient(#ff0000, #040107) !important;
+  background: radial-gradient(#44bd32, #040107) !important;
   line-height: 70px;
   font-size: 30px;
   color: #ffffff !important;
@@ -256,7 +256,7 @@ a {
       line-height: 50px;
       margin: 0 10px; }
       .panel-join-controls .button:last-child .button-content {
-      background-color: #ff0000;
+      background-color: #44bd32;
     }
       .panel-join-controls .button:last-child .button-content::before {
         position: absolute;
@@ -266,7 +266,7 @@ a {
         height: 0;
         border-style: solid;
         border-width: 26px 14px 25px 0;
-        border-color: transparent #ff0000 transparent transparent;
+        border-color: transparent #44bd32 transparent transparent;
         content: ''; }
       .panel-join-controls .button:last-child .button-content::after {
         position: absolute;
@@ -276,7 +276,7 @@ a {
         height: 0;
         border-style: solid;
         border-width: 26px 0 25px 14px;
-        border-color: transparent transparent transparent #ff0000;
+        border-color: transparent transparent transparent #44bd32;
         content: ''; }
     .panel-join-controls .button .button-image {
       top: 3px;

@@ -6,7 +6,7 @@
      <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>TRX Chain</title>
+     <title>TRX Wealth</title>
      <link rel="stylesheet" href="/modules/site/main/assets/styles/odometer-theme-digital.css">
      <link rel="stylesheet" href="/modules/site/main/assets/styles/styles.css?1602611159">
      <link rel="icon" href="/modules/site/main/assets/images/favicon.png" type="image/png" />
@@ -30,7 +30,7 @@
                     <div class="header__grow"></div>
                     <div class="header__item">
                          <div class="header__label">&nbsp;</div>
-                         <div class="header__value lang">
+                         <!-- <div class="header__value lang">
                               <div>Explore</div>
                               <ul>
                                    <li><a href="https://cyberchain.cc" target="_blank">CyberChain</a></li>
@@ -38,7 +38,7 @@
                                    <li><a href="https://ume.finance" target="_blank">Ume.Finance</a></li>
                                    <li><a href="https://eclipcity.io" target="_blank">Eclipcity</a></li>
                               </ul>
-                         </div>
+                         </div> -->
                     </div>
                     <div class="header__item">
                          <div class="header__label">System language</div>
@@ -62,7 +62,7 @@
                     width="96"><img class="top-heading" src="/modules/site/main/assets/images/logo-desktop.png"><img
                     class="top-heading-mobile" src="/modules/site/main/assets/images/logo-mobile.png">
                <div class="container" v-show="tab == 'main'">
-                    <p>A financial system built on smart contract technology.<br>Open to all, transparent to all.</p>
+                    <p><b>Earn 210% returns monthly(7% daily) Guaranteed on a verified Smart contract</b><br>Open to all, transparent to all.</p>
                     <div class="counter-wrapper"><span>$</span>
                          <div class="odometer" ref="odometer">{{ contract.balance * rates.trx }}</div>
                     </div>
@@ -91,7 +91,7 @@
                     <h2 class="join">Join</h2>
                     <div class="panel-join">
                          <div class="panel-join-background"><img class="desktop"
-                                   src="/modules/site/main/assets/images/join.svg"><img class="mobile"
+                                   src="/modules/site/main/assets/images/join.png"><img class="mobile"
                                    src="/modules/site/main/assets/images/mobile-join.png"></div>
                          <div class="panel-join-display"><span>{{ deposit_amount.toFixed(0) }}</span><span>TRX</span>
                          </div>
@@ -122,7 +122,7 @@
                          <h3>Smart contract info</h3>
                          <div>
                               <div class="panel-info-item"><span>Smart contract address</span><a
-                                        :href="'https://tronscan.org/#/contract/' + contract_address"
+                                        :href="'https://shasta.tronscan.org/#/contract/' + contract_address"
                                         target="_blank">{{ contract_address.substr(0, 8) }}...</a></div>
                               <div class="panel-info-item"><span>Total TRX deposits all time</span><span
                                         class="ether-value">{{ safe(contract.total_deposited.toLocaleString()) }}
@@ -198,7 +198,7 @@
                               <div class="panel-info-item"><span>Invitation link</span><a class="btn"
                                         v-if="tron.account" :href="location.origin + '#ref=' + tron.account"
                                         target="_blank"
-                                        @click.prevent="copyText('https://trxchain.io/#ref=' + tron.account)">Copy</a><span
+                                        @click.prevent="copyText('https://tronwealth.co/#ref=' + tron.account)">Copy</a><span
                                         class="ether-value" v-if="!tron.account">---</span></div>
                               <div class="panel-info-item"><span>Personal invited partners</span><span
                                         class="ether-value" v-text="safe(user.referrals)"></span></div>
@@ -217,18 +217,18 @@
                     <h3>Guide</h3>
                     <p>Welcome to the world´s first decentralized community support fund built on TRON blockchain and
                          smart contract technology.</p>
-                    <p>The TRONCHAIN Smart Contract is designed to provide everyone with an independent, financial
+                    <p>The TronWealth Smart Contract is designed to provide everyone with an independent, financial
                          support fund, based on Smart Contract technology, surrounded and supported by multiple services
-                         including DEFI and online gaming through ECLIPCITY.</p>
-                    <p>Any participant can contribute TRX towards the community fund and support the TRONCHAIN community
+                         </p>
+                    <p>Any participant can contribute TRX towards the community fund and support the TronWealth community
                          members, the participant will now activate the contract code and will start to receive support
                          back from other community members.</p>
-                    <p>TRONCHAIN is 100% decentralized and a community-based project; Meaning that there are no
-                         guarantee nor additional profits made in TRONCHAIN alone, all that you receive from TRONCHAIN
+                    <p>TronWealth is 100% decentralized and a community-based project; Meaning that there are no
+                         guarantee nor additional profits made in TronWealth alone, all that you receive from TronWealth
                          is made from other community members and based upon your own and the community efforts as this
                          is a P2P support model.</p>
                     <p>You support others and others support you back.</p>
-                    <p>TRONCHAIN can actually be viewed as a decentralized “third party” which insures complete
+                    <p>TronWealth can actually be viewed as a decentralized “third party” which insures complete
                          fairness, transparency and justice for all according to the algorithm code.</p>
                     <p>There are no mediators or intermediaries, no owners, no company, no CEO and no human interaction,
                          which is effectively guaranteeing the fairness of all participating partners and partners funds
@@ -236,7 +236,7 @@
                     <p>It is the most reasonable, safest, and best cutting-edge financial SUPPORT model available at
                          this time.</p>
                     <hr /><br />
-                    <p>You can participate in TRONCHAIN a minimum deposit of 100 TRX to the Fund, you are now eligible
+                    <p>You can participate in TronWealth a minimum deposit of 100 TRX to the Fund, you are now eligible
                          to receive 210% back</p>
                     <p>The 210% is returned in 4 ways (1 passive and 3 via marketing) and when the 210% is accumulated
                          through any of the 4 ways, a new deposit must be made equal or greater to continue receiving
@@ -270,7 +270,7 @@
                     <p>4th cycle and beyond, equal or greater than previous deposit, up to 2 000 000 TRX.</p>
                     <hr /><br />
                     <p>IMPORTANT NOTES*</p>
-                    <p>*TRX CHAIN is a community-based project, 100% decentralized, P2P transactions through Smart
+                    <p>*TRX Wealth is a community-based project, 100% decentralized, P2P transactions through Smart
                          Contract.</p>
                     <p>*Each Deposit Cycle is 210%.</p>
                     <p>*When 210% is received, a new deposit must be made to continue earning / receiving from any of
@@ -279,7 +279,7 @@
                     <p>*No referrals required in order to receive the 7% that pays out daily to all members, 100%
                          passive.</p>
                     <p>*Increase the speed of your returns by growing the community fund through marketing / sharing of
-                         TRX CHAIN.</p>
+                         TRX Wealth.</p>
                     <p>*Admin and Dev team is developing and deploying multiple services within DEFI, marketing, Online
                          gaming, Crypto Debit card, Unified Tech Service and much more to complete the vision of a
                          complete decentralized financial support system.</p><br><a href="/"
@@ -289,11 +289,11 @@
           <section class="section" v-show="tab == 'tutorial'">
                <div class="page">
                     <h3>How to join</h3>
-                    <p>To join TRON CHAIN you need to use one of the following Dapp wallets.</p>
+                    <p>To join TRON WEALTH you need to use one of the following Dapp wallets.</p>
                     <p>To connect with the smart contract, please download, set up, and fund your preferred wallet from
                          the instructions below.</p>
-                    <p>*it is mandatory to use a referral link 1st time depositing to TRON CHAIN smart contract, please
-                         get back to the person that introduced you to TRON CHAIN.</p>
+                    <p>*it is mandatory to use a referral link 1st time depositing to TRON WEALTH smart contract, please
+                         get back to the person that introduced you to TRON WEALTH.</p>
                     <p>PHONE WALLET -</p>
                     <p>TRON WALLET - download at offical site:<br /><a href="https://www.tronwallet.me/" target="_blank"
                               rel="nofollow noopener noreferrer">https://www.tronwallet.me/</a></p>
@@ -315,12 +315,12 @@
                     <p>How download TRONLINK browser extension?</p>
                     <p>Official website:&nbsp;<a href="https://www.tronlink.org/" target="_blank"
                               rel="nofollow noopener noreferrer">https://www.tronlink.org/</a></p>
-                    <p>How to connect TRONLINK to TRON CHAIN smart contract?</p>
-                    <p>Open Web browser with TronLink download<br />Enter&nbsp;<a href="https://trxchain.io/"
-                              target="_blank" rel="nofollow noopener noreferrer">TRXCHAIN.IO</a>&nbsp;(ref link) an
-                         click enter<br />Allow TRONLINK wallet to connect to&nbsp;<a href="https://trxchain.io/"
-                              target="_blank" rel="nofollow noopener noreferrer">trxchain.io</a></p>
-                    <p>*first time joining TRON CHAIN, follow these steps</p>
+                    <p>How to connect TRONLINK to TRON WEALTH smart contract?</p>
+                    <p>Open Web browser with TronLink download<br />Enter&nbsp;<a href="https://tronwealth.co/"
+                              target="_blank" rel="nofollow noopener noreferrer">tronwealth.co</a>&nbsp;(ref link) an
+                         click enter<br />Allow TRONLINK wallet to connect to&nbsp;<a href="https://tronwealth.co/"
+                              target="_blank" rel="nofollow noopener noreferrer">tronwealth.co</a></p>
+                    <p>*first time joining TRON WEALTH, follow these steps</p>
                     <p>copy ref link from sponsor<br />enter ref link into your pc browser with TRONLINK
                          extension<br />Select the amount you wish to deposit up to 100.000 TRX<br />Click join and
                          confirm transaction in wallet</p><br /><a href="/" @click.prevent="tab = 'main'">Back</a>
@@ -377,8 +377,8 @@
           </div>
      </main>
      <footer>
-          <div class="footer-content"><a href="https://t.me/trxchainofficial" target="_blank" class="btn">🏛 Official
-                    channel</a><a href="https://t.me/EclipCity_support" target="_blank" class="btn">🦹 Support team</a>
+          <div class="footer-content"><a href="https://t.me/tronwealthofficial" target="_blank" class="btn">🏛 Official
+                    channel</a><a href="https://t.me/ericmu" target="_blank" class="btn">🦹 Support team</a>
           </div>
      </footer>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
