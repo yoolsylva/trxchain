@@ -95,7 +95,7 @@
                                    src="/modules/site/main/assets/images/mobile-join.png"></div>
                          <div class="panel-join-display"><span>{{ deposit_amount.toFixed(0) }}</span><span>TRX</span>
                          </div>
-                         <div class="panel-join-values"><a href="#" @click.prevent="deposit_amount += 100">+ 100
+                         <div class="panel-join-values"><a href="#" @click.prevent="deposit_amount += 50">+ 50
                                    TRX</a><a href="#" @click.prevent="deposit_amount += 1000">+ 1K TRX</a><a href="#"
                                    @click.prevent="deposit_amount += 10000">+ 10K TRX</a><a href="#"
                                    @click.prevent="deposit_amount += 30000">+ 30K TRX</a><a href="#"
@@ -161,7 +161,7 @@
                               <div class="panel-info-item"><span>210% income limit remain</span><span
                                         class="ether-value">{{ safe(Math.max(0, (user.deposit_amount * 2.1 - user.payouts)).toLocaleString()) }}
                                         TRX</span></div>
-                              <div class="panel-info-item"><span>Daily income 1%</span><span
+                              <div class="panel-info-item"><span>Daily income 7%</span><span
                                         class="ether-value">{{ safe(user.payout.toLocaleString()) }} TRX</span></div>
                               <div class="panel-info-item"><span>Direct referral income</span><span
                                         class="ether-value">{{ safe(user.direct_bonus.toLocaleString()) }} TRX</span>
@@ -243,7 +243,7 @@
                          from the fund.</p>
                     <ol>
                          <li>
-                              <p>1% Daily return on your Deposit (maximum 210 days) 100% Passive.</p>
+                              <p>7% Daily return on your Deposit (maximum 30 days) 100% Passive.</p>
                          </li>
                          <li>
                               <p>10% Direct Referral Commission for Sharing and Growing the Community Fund.</p>
@@ -264,7 +264,7 @@
                     </ol>
                     <hr /><br />
                     <p>Minimum and maximum deposit limits</p>
-                    <p>1st cycle, minimum deposit 100 TRX, up to 100 000 TRX.</p>
+                    <p>1st cycle, minimum deposit 50 TRX, up to 100 000 TRX.</p>
                     <p>2nd cycle, equal or greater than previous deposit, up to 300 000 TRX.</p>
                     <p>3rd cycle, equal or greater than previous deposit, up to 900 000 TRX.</p>
                     <p>4th cycle and beyond, equal or greater than previous deposit, up to 2 000 000 TRX.</p>
@@ -275,8 +275,8 @@
                     <p>*Each Deposit Cycle is 210%.</p>
                     <p>*When 210% is received, a new deposit must be made to continue earning / receiving from any of
                          the 4 ways.</p>
-                    <p>*Minimum entry is 100 TRX, open to all participants, no restrictions.</p>
-                    <p>*No referrals required in order to receive the 1% that pays out daily to all members, 100%
+                    <p>*Minimum entry is 50 TRX, open to all participants, no restrictions.</p>
+                    <p>*No referrals required in order to receive the 7% that pays out daily to all members, 100%
                          passive.</p>
                     <p>*Increase the speed of your returns by growing the community fund through marketing / sharing of
                          TRX CHAIN.</p>
