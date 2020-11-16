@@ -707,7 +707,7 @@
         el: '#App',
         data: {
             tab: 'main',
-            contract_address: 'TXJZ4gDddnk6s8Bg6kG54ELpFrCicjvcnp',
+            contract_address: 'TG23zAa7khKJbqyEaEg8HA9ddJYwDiLXWd',
             upline: '',
             contract: {
                 balance: 0,

