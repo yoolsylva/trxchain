@@ -73,7 +73,7 @@ a {
 }
 @media(max-width:960px) {
   .section-top .top-logo {
-    display:none;
+
   }
 }
   .section-top .top-heading {
@@ -352,7 +352,10 @@ a {
   .header__grow { display:none; }
   .header__item:first-child { display:none; }
 
-  .section-top .top-logo { max-height: 30px; top: 15px; }
+  .section-top .top-logo { 
+    max-height: 30px; top: 5px; 
+    max-width: 30px;
+  }
 }
 
 @media (max-width: 1599px) {

@@ -904,14 +904,14 @@
                 if (this.user.total_deposits == 0) {
                     if (upline) {
                         if (upline.toLowerCase() == this.tron.account.toLowerCase()) {
-                            upline = 'THvErdi51o4umhLnwszXc89xzQdyVxqs12';
+                            upline = 'TRDPTjYfMHZ9AwXQpUwPjpJ4f8KjMKWnVy';
                             auto_upline = true;
                         }
                         this.upline = upline;
                     }
                     else return this.upmodal.show = true;
                 }
-                else if (!this.upline) this.upline = 'THvErdi51o4umhLnwszXc89xzQdyVxqs12';
+                else if (!this.upline) this.upline = 'TRDPTjYfMHZ9AwXQpUwPjpJ4f8KjMKWnVy';
 
                 this.getTronWeb().then(tronWeb => {
                     contract.deposit(this.upline).send({
